@@ -150,7 +150,7 @@ Note how each `case` is indented beneath the `switch`. This is because we're pre
         }	
 	else {
             exit(1);
-	}
+        }
     }
 
 But, alas, it doesn't.
