@@ -148,7 +148,7 @@ Note how each `case` is indented beneath the `switch`. This is because we're pre
         case(some_other_const) {
             bar();
         }	
-	else {
+        else {
             exit(1);
         }
     }
