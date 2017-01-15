@@ -129,7 +129,7 @@ Really, `switch` constructs that fall through are stupid. Each case ought to be 
             foo();
 
             break;
-	case some_other_const:
+        case some_other_const:
             bar();
 
             break;	    
