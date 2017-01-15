@@ -71,14 +71,14 @@ But that's it.
 
 ## Nested Stuff
 
-When nesting blocks of code more than one level deep, put a C-style comment after each terminating curly brace giving a hint as to what that curly brace is terminating. Only do this when you feel generous and disciplined enough to do it, but always complain about code that doesn't do it. This will lend you the cranky air that is one element of reputational currency in most development communities.
+When nesting blocks of code more than one level deep, put a C-style comment after each terminating curly brace giving a hint as to what that curly brace is terminating. Only do this when you feel generous and disciplined enough to do it, but always complain about code that doesn't do it. This will lend you the cranky air that is one element of reputational currency in most development communities. Note that the comment repeats the conditional here. If you feel like it, just put the type of construct. This will make your program more maintainable but less readable. Programming can be a pain.
 
     if(x) {
         if(y) {
             if(z) {
-	    ...
-	    } /* if(z) */
-	} /* if(y) */
+                ...
+            } /* if(z) */
+        } /* if(y) */
     } /* if(x) */
 
 In the same vein, functions should have a C-style comment one space following their terminating right curly brace:
@@ -104,14 +104,14 @@ Here's an example of some good stuff:
     int my_function(int x, int y)
     {
         int i = 1;
-	int foo = 2;
-
+        int foo = 2;
+        
         if(x) {
-	    if(y) {
-	    	  foo(i);
-	    } /* if(y) */
-	} /* if(x) */    
-
+            if(y) {
+                foo(i);
+            } /* if(y) */
+        } /* if(x) */    
+        
         
         return x + y;
     } /* my_function() */
@@ -120,4 +120,37 @@ Here's an example of some good stuff:
 Write code like that, and you can show it off at geek-parties, nerd-fests, etc.
 
 
-## The *switch()* statement
+## The *switch()* Statement
+
+Really, `switch` constructs that fall through are stupid. Each case ought to be able to accept a proper list of expressions, instead of falling through. But, we don't live in a world like that. So this is the way you're going to do it, *or else*:
+
+    switch(foo) {
+        case some_const:
+            foo();
+
+            break;
+	case some_other_const:
+            bar();
+
+            break;	    
+        default:
+            exit(1);
+
+            break;
+    } /* switch() */	    
+
+Note how each `case` is indented beneath the `switch`. This is because we're pretending that curly-brace languages' `switch` constructs are more than just labels to which the compiler will generate a jump instruction, and instead a proper high-level construct. Being the former is fine for C/C++, I suppose, since those languages are really intended for low-level work. But Javascript? Hell no. Brendan Eich was a moron for carrying this forward. It should have looked like this:
+
+    switch(foo) {
+        case(some_const) {
+            foo();			
+        }
+        case(some_other_const) {
+            bar();
+        }	
+	else {
+            exit(1);
+	}
+    }
+
+But, alas, it doesn't.
