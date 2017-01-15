@@ -68,13 +68,56 @@ But that's it.
     for(i = 1; i < 10; i++) {
         ...
     }
+
+## Nested Stuff
+
+When nesting blocks of code more than one level deep, put a C-style comment after each terminating curly brace giving a hint as to what that curly brace is terminating. Only do this when you feel generous and disciplined enough to do it, but always complain about code that doesn't do it. This will lend you the cranky air that is one element of reputational currency in most development communities.
+
+    if(x) {
+        if(y) {
+            if(z) {
+	    ...
+	    } /* if(z) */
+	} /* if(y) */
+    } /* if(x) */
+
+In the same vein, functions should have a C-style comment one space following their terminating right curly brace:
+
+    my_function()
+    {
+
+    } /* my_function() */
+
+This terminating comment *must not* repeat the function's signature, but *must* include the parens to denote that it's a function. Why *must* and *must not*, you ask? Because I said so, and I'm an opinionated bastard. 
     
 ## Overall Program Spacing
 
 * Variable declarations fall immediately beneath the opening curly brace, and should initialize the variable right there whenever initialization is used.
 * One line between the last variable declaration and the first line of real code.
-* 
+* The `return` statement of a function (when used as the last line of a function) should have one blank line above it and none below it.
+* Never put unnecessary spaces, such as `if (x)`. Obviously, `if(x)` is correct.
+* The `return` statement shouldn't really have parens around its expression. I used to think otherwise, but I've changed my mind on that. It's not a function.
+
+Here's an example of some good stuff:
 
 
+    int my_function(int x, int y)
+    {
+        int i = 1;
+	int foo = 2;
+
+        if(x) {
+	    if(y) {
+	    	  foo(i);
+	    } /* if(y) */
+	} /* if(x) */    
+
+        
+        return x + y;
+    } /* my_function() */
 
 
+Write code like that, and you can show it off at geek-parties, nerd-fests, etc.
+
+
+## The *switch()* statement
