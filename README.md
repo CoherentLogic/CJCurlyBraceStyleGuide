@@ -47,7 +47,7 @@ Two or four *spaces* are the correct way. Tabs screw up editors, and eight space
 
     }
 
-We don't tolerate any of that } else { nonsense. Looks like that Star Wars scene where what's his face was about to get crushed in the trash compactor.
+We don't tolerate any of that `} else {` nonsense. Looks like that Star Wars scene where what's his face was about to get crushed in the trash compactor.
 
 Also, NEVER do this:
 
