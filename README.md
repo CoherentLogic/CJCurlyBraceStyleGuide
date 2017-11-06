@@ -25,6 +25,24 @@ Obviously, this_type_of_thing is objectively the only right way of naming variab
 
 Your code will probably have to play in a world full of camelCase and PascalCase cretinism, and maybe even lpszHungarianNonsense. Stick with the dominant convention in your particular world. Especially in Javascript. I've done this_type_of_thing in JS before, because as previously mentioned, it's objectively the obvious superior choice, but then I've had to call into the code of other cretins, and get forced to mix camelCase crap with the_one_true_way. This looks worse than justDoingCamelCase.
 
+There is a good reason why camelCase is a piece of unmitigated garbage. And that is because of the horrible, disgusting corner into which it forces the hapless developer who needs to include an acronym in some identifier. Let's say we want a function that does something to a URL. If we go with the normal convention, we get this:
+
+     doSomethingToUrl()
+
+This is nasty, because the object is a "you-are-ell", not an "earl". But if we try to correct it like this:
+
+     doSomethingToURL()
+
+we end up with future nastiness, and/or inconsistency. This, because what if we want to do something specifically to an HTTP URL? Do we do this:
+
+     doSomethingToHTTPURL()
+
+which is ridiculously hard to read, or do we do this:
+
+     doSomethingToHttpUrl()
+
+and destroy proper capitalization for acronyms? Neither one is a halfway decent solution. Now, certainly, using proper_underscore_based_identifiers, we destroy proper capitalization as well, but this is okay, because the convention with underscores makes no pretense of doing any sort of correct capitalization, and is basically pretending that [A-Z] don't even exist. However, camelCase and PascalCase start your day by suggesting that they're going to capitalize things in "Title Case" or "some Distortion Thereof", but then they reveal themselves to be filthy liars when they get to an acronym. Really, they're stupidly attempting to use CAPITAL LETTERS as some sort of ass-backwards delimiter between words. SMH... or... Smh.
+
 ## Indentation
 
 Two or four *spaces* are the correct way. Tabs screw up editors, and eight spaces look looser than certain anatomical regions belonging to women of the night. Don't be a code-slut. If you do it my way, everyone will rejoice.
